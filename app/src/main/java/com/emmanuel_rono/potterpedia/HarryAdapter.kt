@@ -8,10 +8,9 @@ import com.emmanuel_rono.potterpedia.databinding.DatalayoutBinding
 
 class HarryAdapter:RecyclerView.Adapter<HarryAdapter.myViewHolder>()
 {
-    inner class myViewHolder(binding: DatalayoutBinding):RecyclerView.ViewHolder(binding.root)
+    inner class myViewHolder(binding:DatalayoutBinding):RecyclerView.ViewHolder(binding.root)
     {
-
-
+        val name=binding.
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
         TODO("Not yet implemented")

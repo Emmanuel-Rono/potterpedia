@@ -1,14 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ListDetails">
-
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/name_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Name:    "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/name_value_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:text="Emmanuel"
+        app:layout_constraintStart_toEndOf="@+id/name_label_text_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/id_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="ID:   "
+        app:layout_constraintStart_toStartOf="@+id/name_value_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/name_value_text_view" />
+
+    <TextView
+        android:id="@+id/id_value_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:text="3333"
+        app:layout_constraintStart_toEndOf="@+id/id_label_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/name_value_text_view" />
+
+    <TextView
+        android:id="@+id/species_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Species   "
+        app:layout_constraintStart_toStartOf="@+id/id_label_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/id_label_text_view" />
+
+    <TextView
+        android:id="@+id/species_value_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        android:text="afRICAN-aMERICAN"
+        app:layout_constraintStart_toEndOf="@+id/species_label_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/id_label_text_view" />
+
+    <TextView
+        android:id="@+id/dob_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="D.O.B   "
+        app:layout_constraintStart_toStartOf="@+id/species_label_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/species_value_text_view" />
+
+    <TextView
+        android:id="@+id/dob_value_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="596dp"
+        android:text="10/12/2023"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toEndOf="@id/dob_label_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/species_value_text_view"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
