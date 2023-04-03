@@ -13,7 +13,7 @@ import java.util.Objects
 
 
 class HarryAdapter:RecyclerView.Adapter<HarryAdapter.myViewHolder>() {
-    inner class myViewHolder(binding: DatalayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class myViewHolder(val binding: DatalayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         val name_text = binding.Name
         val Species = binding.Species
     }
@@ -41,8 +41,14 @@ class HarryAdapter:RecyclerView.Adapter<HarryAdapter.myViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: HarryAdapter.myViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.binding.apply {
+            val data=potterData[position]
+            //holder.name_text.text=data.name
+            Species.text=data.species
+            Name.text=data.name
+
+        }
     }
-    override fun getItemCount()=PotterData.
-    }
+    override fun getItemCount()=potterData.size
+
 }
