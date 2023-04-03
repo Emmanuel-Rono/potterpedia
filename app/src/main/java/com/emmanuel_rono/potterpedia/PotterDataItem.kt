@@ -22,3 +22,5 @@ data class PotterDataItem(
     val wizard: Boolean,
     val yearOfBirth: Int
 )
+
+

@@ -17,17 +17,14 @@ class HarryAdapter:RecyclerView.Adapter<HarryAdapter.myViewHolder>() {
         val name_text = binding.Name
         val Species = binding.Species
     }
-
     private val diffCallback = object : DiffUtil.ItemCallback<PotterDataItem>() {
         override fun areItemsTheSame(oldItem: PotterDataItem, newItem: PotterDataItem): Boolean {
             return oldItem.id == newItem.id
 
         }
-
         override fun areContentsTheSame(oldItem: PotterDataItem, newItem: PotterDataItem): Boolean {
             return oldItem == newItem
         }
-
     }
     private val difference = AsyncListDiffer(this, diffCallback)
     var potterData: List<PotterDataItem>

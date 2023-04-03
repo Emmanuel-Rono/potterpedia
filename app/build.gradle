@@ -35,6 +35,9 @@ android {
         jvmTarget = '1.8'
     }
 }
+configurations {
+    compile.exclude module: 'kotlin-stdlib-jdk8'
+}
 
 dependencies {
 
