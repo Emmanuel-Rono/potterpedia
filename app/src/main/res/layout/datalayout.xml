@@ -16,6 +16,7 @@
             app:layout_constraintEnd_toStartOf="@+id/Species"
             app:layout_constraintHorizontal_bias="0.736"
             app:layout_constraintStart_toStartOf="parent" />
+
         <TextView
             android:id="@+id/name_label"
             android:layout_width="wrap_content"

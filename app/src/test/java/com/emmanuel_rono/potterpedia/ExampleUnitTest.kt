@@ -3,15 +3,29 @@ package com.emmanuel_rono.potterpedia
 import org.junit.Test
 
 import org.junit.Assert.*
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
+import org.junit.runner.RunWith
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
+@RunWith(AndroidJUnit4::class)
+class HarryPotterApiTest {
+
+    private val api =harryList(ApplicationProvider.getApplicationContext())
+
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun testGetCharacters() {
+        runBlocking {
+            val characters = api.getCharacters()
+
+            // Ensure the API returns a list of characters
+            assertEquals(true, characters.isNotEmpty())
+
+            // Ensure each character has a name
+            characters.forEach { character ->
+                assertEquals(true, character.name.isNotBlank())
+            }
+        }
     }
 }
