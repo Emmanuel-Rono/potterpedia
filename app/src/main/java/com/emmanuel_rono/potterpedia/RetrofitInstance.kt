@@ -8,7 +8,7 @@ object RetrofitInstance
     //initialise API
     val api: HarryInterface by lazy {
         Retrofit.Builder()
-            .baseUrl("https://hp-api.onrender.com/")
+            .baseUrl("https://hp-api.onrender.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build() //to build the api
             .create(HarryInterface::class.java) //Builds the object

@@ -8,7 +8,6 @@ import android.view.ViewGroup
 
 
 class ListDetails : Fragment(R.layout.fragment_list_details)
-
 {
 
 }

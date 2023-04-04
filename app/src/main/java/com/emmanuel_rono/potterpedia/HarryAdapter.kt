@@ -9,18 +9,33 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.emmanuel_rono.potterpedia.databinding.DatalayoutBinding
 import java.util.Collections.list
+import java.util.EventListener
 import java.util.Objects
-
-
 class HarryAdapter:RecyclerView.Adapter<HarryAdapter.myViewHolder>() {
-    inner class myViewHolder(val binding: DatalayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        val name_text = binding.Name
-        val Species = binding.Species
+
+    lateinit var listener: onItemClickLsitener
+
+     //Passing onClick listener for the Recyclerview
+
+    interface onItemClickLsitener {
+        fun onItemClick(position: Int)
+    }
+    fun setOnItemClick(Listener: onItemClickLsitener) {
+        listener = Listener
+    }
+
+    inner class myViewHolder(val binding: DatalayoutBinding,listener: HarryAdapter.onItemClickLsitener) : RecyclerView.ViewHolder(binding.root) {
+        val name_text = binding.nameLabel
+        val Species = binding.speciesLabel
+        init {
+            itemView.setOnClickListener{
+                listener.onItemClick(adapterPosition)
+            }
+        }
     }
     private val diffCallback = object : DiffUtil.ItemCallback<PotterDataItem>() {
         override fun areItemsTheSame(oldItem: PotterDataItem, newItem: PotterDataItem): Boolean {
             return oldItem.id == newItem.id
-
         }
         override fun areContentsTheSame(oldItem: PotterDataItem, newItem: PotterDataItem): Boolean {
             return oldItem == newItem
@@ -34,18 +49,15 @@ class HarryAdapter:RecyclerView.Adapter<HarryAdapter.myViewHolder>() {
         }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HarryAdapter.myViewHolder {
       return myViewHolder(DatalayoutBinding.inflate(LayoutInflater.from(parent.context),
-      parent,false))
+      parent,false), listener)
     }
-
     override fun onBindViewHolder(holder: HarryAdapter.myViewHolder, position: Int) {
         holder.binding.apply {
             val data=potterData[position]
             //holder.name_text.text=data.name
-            Species.text=data.species
+            Species  .text=data.species
             Name.text=data.name
-
         }
     }
     override fun getItemCount()=potterData.size
-
 }

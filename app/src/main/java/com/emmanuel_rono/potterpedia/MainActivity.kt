@@ -23,13 +23,14 @@ class MainActivity : AppCompatActivity() {
                     val response = try {
                         RetrofitInstance.api.getCharacters()
                     } catch(e: IOException) {
-                        Log.e(TAG, "IOException, you might not have internet connection")
+                        Log.e(TAG, "Internet exception")
                         return@repeatOnLifecycle
                     } catch (e: HttpException) {
-                        Log.e(TAG, "HttpException, unexpected response")
+                        Log.e(TAG, "HttpException")
                         return@repeatOnLifecycle
                     }
                     if(response.isSuccessful && response.body() != null) {
+                        todoAdapter=HarryAdapter()
                         todoAdapter.potterData= response.body()!!
                     } else {
                         Log.e(TAG, "Response not successful")
