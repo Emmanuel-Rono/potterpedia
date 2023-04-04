@@ -11,21 +11,5 @@ import android.view.View
 import android.view.ViewGroup
 import com.emmanuel_rono.potterpedia.databinding.FragmentListDetailsBinding
 @SuppressLint("StaticFieldLeak")
-class ListDetails : Fragment( )
-{
-    lateinit var binding :FragmentListDetailsBinding
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding =FragmentListDetailsBinding.inflate(inflater, container, false)
-        val character = arguments?.getParcelableExtraCompat<PotterDataItem>("character")
+class ListDetails : Fragment(R.layout.fragment_list_details)
 
-
-    binding.nameLabelTextView.text= character?.name
-    binding.speciesLabelTextView.text = character?.species
-    binding.dobValueTextView.text = character?.dateOfBirth
-    binding.idValueTextView.text = character?.Id
-
-}

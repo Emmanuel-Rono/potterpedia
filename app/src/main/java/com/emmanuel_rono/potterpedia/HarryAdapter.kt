@@ -3,6 +3,7 @@ package com.emmanuel_rono.potterpedia
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -11,27 +12,12 @@ import com.emmanuel_rono.potterpedia.databinding.DatalayoutBinding
 import java.util.Collections.list
 import java.util.EventListener
 import java.util.Objects
-class HarryAdapter:RecyclerView.Adapter<HarryAdapter.myViewHolder>() {
+class HarryAdapter(val dataItem: List<PotterDataItem>):RecyclerView.Adapter<HarryAdapter.myViewHolder>() {
 
-    lateinit var listener: onItemClickLsitener
+    inner class myViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val nametext:TextView=itemView.findViewById(R.id.Name_text)
+        val Speciestext:TextView=itemView.findViewById(R.id.species_text)
 
-     //Passing onClick listener for the Recyclerview
-
-    interface onItemClickLsitener {
-        fun onItemClick(position: Int)
-    }
-    fun setOnItemClick(Listener: onItemClickLsitener) {
-        listener = Listener
-    }
-
-    inner class myViewHolder(val binding: DatalayoutBinding,listener: HarryAdapter.onItemClickLsitener) : RecyclerView.ViewHolder(binding.root) {
-        val name_text = binding.nameLabel
-        val Species = binding.speciesLabel
-        init {
-            itemView.setOnClickListener{
-                listener.onItemClick(adapterPosition)
-            }
-        }
     }
     private val diffCallback = object : DiffUtil.ItemCallback<PotterDataItem>() {
         override fun areItemsTheSame(oldItem: PotterDataItem, newItem: PotterDataItem): Boolean {
@@ -42,22 +28,25 @@ class HarryAdapter:RecyclerView.Adapter<HarryAdapter.myViewHolder>() {
         }
     }
     private val difference = AsyncListDiffer(this, diffCallback)
-    var potterData: List<PotterDataItem>
+    var potterData:List<PotterDataItem>
         get() = difference.currentList
         set(value) {
             difference.submitList(value)
         }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HarryAdapter.myViewHolder {
-      return myViewHolder(DatalayoutBinding.inflate(LayoutInflater.from(parent.context),
-      parent,false), listener)
+        val view=LayoutInflater.from(parent.context).inflate(R.layout.datalayout,parent,false)
+        return myViewHolder(view)
+
     }
     override fun onBindViewHolder(holder: HarryAdapter.myViewHolder, position: Int) {
-        holder.binding.apply {
-            val data=potterData[position]
-            //holder.name_text.text=data.name
-            Species  .text=data.species
-            Name.text=data.name
-        }
+        val data=dataItem[position]
+ holder.Speciestext.text=data.species
+        holder.nametext.text=data.name
     }
-    override fun getItemCount()=potterData.size
+
+    override fun getItemCount(): Int {
+
+        return  dataItem.size
+    }
+
 }

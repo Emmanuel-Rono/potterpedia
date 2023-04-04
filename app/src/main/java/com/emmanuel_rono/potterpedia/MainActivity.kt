@@ -11,9 +11,9 @@ import com.emmanuel_rono.potterpedia.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
-
 class MainActivity : AppCompatActivity() {
     lateinit var binding:ActivityMainBinding
+    var data = ArrayList<PotterDataItem>()
     private lateinit var todoAdapter:HarryAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +30,9 @@ class MainActivity : AppCompatActivity() {
                         return@repeatOnLifecycle
                     }
                     if(response.isSuccessful && response.body() != null) {
-                        todoAdapter=HarryAdapter()
                         todoAdapter.potterData= response.body()!!
                     } else {
                         Log.e(TAG, "Response not successful")
                     }
                 }
         }}}
-

@@ -7,30 +7,30 @@
     android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/Name"
+            android:id="@+id/Name_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name:  "
             android:textSize="20sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/Species"
-            app:layout_constraintEnd_toStartOf="@+id/Species"
+            app:layout_constraintBaseline_toBaselineOf="@+id/Name_text"
+            app:layout_constraintEnd_toStartOf="@+id/Name_text"
             app:layout_constraintHorizontal_bias="0.736"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/name_label"
+            android:id="@+id/Species_Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:text="JON DOE"
             android:textSize="20sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/species_label"
-            app:layout_constraintEnd_toStartOf="@+id/species_label"
+            app:layout_constraintBaseline_toBaselineOf="@+id/species_text"
+            app:layout_constraintEnd_toStartOf="@+id/species_text"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/Species"
+            android:id="@+id/Name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="148dp"
@@ -41,7 +41,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/species_label"
+            android:id="@+id/species_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
@@ -49,7 +49,7 @@
             android:text="Veteran"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Species" />
+            app:layout_constraintTop_toBottomOf="@+id/Name_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
